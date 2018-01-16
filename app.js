@@ -15,6 +15,17 @@ app.get('/blocks', function (request, response) {
   }
 });
 
+var blocks = {
+    'Fixed': 'This block is fixed',
+    'Movable': 'This block is movable',
+    'Rotating': 'This block is rotating'
+};
+
+app.get('/blocks/:name', function (request, response) {
+  var description = blocks[request.params.name];
+  response.json(description);
+});
+
 app.get('/redirectme', function (request, response) {
   response.redirect('/newurl');
 });
