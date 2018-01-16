@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bhaskarmac/expressAPI/issues"
   },
-  "homepage": "https://github.com/bhaskarmac/expressAPI#readme"
+  "homepage": "https://github.com/bhaskarmac/expressAPI#readme",
+  "devDependencies": {
+    "nodemon": "1.14.11"
+  }
 }
