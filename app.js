@@ -6,6 +6,11 @@ app.get('/', function (request, response) {
   response.end();
 });
 
+app.get('/blocks', function (request, response) {
+  var blocks = ['fixed', 'movable', 'rotating'];
+  response.send(blocks);
+});
+
 app.listen(3000, function () {
   console.log('Listening at localhost:3000');
 });
