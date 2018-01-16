@@ -1,4 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 *{
   margin: 0;
   padding: 0;
+}
+body{
+  padding: 100px;
+  background: url('bg.jpg') no-repeat;
+  font-family: Roboto;
+}
+.block-list{
+  padding: 15px;
+}
+.block-list li{
+  padding: 5px;
+  border: 1px solid;
+  list-style-type: none;
 }
