@@ -11,6 +11,10 @@ app.get('/blocks', function (request, response) {
   response.send(blocks);
 });
 
+app.get('/redirectme', function (request, response) {
+  response.redirect('/newurl');
+});
+
 app.listen(3000, function () {
   console.log('Listening at localhost:3000');
 });
