@@ -23,7 +23,11 @@ var blocks = {
 
 app.get('/blocks/:name', function (request, response) {
   var description = blocks[request.params.name];
-  response.json(description);
+  if(!description){
+    response.status(404).json('No description found for ' + request.params.name);
+  }else {
+    response.json(description);
+  }
 });
 
 app.get('/redirectme', function (request, response) {
