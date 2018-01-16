@@ -5,7 +5,7 @@
 }
 body{
   padding: 100px;
-  background: url('bg.jpg') no-repeat;
+  background: url('bg.jpg');
   font-family: Roboto;
 }
 .block-list{
