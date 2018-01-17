@@ -30,4 +30,18 @@ $(document).ready(function () {
     });
   });
 
+  $('.block-list').on('click', 'a[data-block]', function (e) {
+    if(!confirm("Are you sure to delete this block?")){
+      return false;
+    }
+
+    var target = $(e.currentTarget);
+    $.ajax({
+      type: 'DELETE',
+      url: '/blocks/' + target.data('block')
+    }).done(function () {
+      target.parents('li').slideUp('slow').remove();
+    });
+  });
+
 });

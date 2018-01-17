@@ -10,9 +10,9 @@ app.use(logger);
 app.use(express.static('public'));
 
 var blocks = {
-    'Fixed': 'This block is fixed',
-    'Movable': 'This block is movable',
-    'Rotating': 'This block is rotating'
+  'Fixed': 'This block is fixed',
+  'Movable': 'This block is movable',
+  'Rotating': 'This block is rotating'
 };
 
 app.get('/blocks', function (request, response) {
@@ -47,8 +47,12 @@ app.get('/redirectme', function (request, response) {
 app.post('/blocks', parseUrlEncoded, function (request, response) {
   var newBlock = request.body;
   blocks[newBlock.name] = newBlock.description;
-
   response.status(201).json(newBlock.name);
+});
+
+app.delete('/blocks/:name', function (request, response) {
+  delete blocks[request.blockName];
+  response.sendStatus(200);
 });
 
 app.listen(3000, function () {
