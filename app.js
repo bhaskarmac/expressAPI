@@ -6,20 +6,19 @@ app.use(logger);
 
 app.use(express.static('public'));
 
-app.get('/blocks', function (request, response) {
-  var blocks = ['fixed', 'movable', 'rotating'];
-  if(request.query.limit >= 0){
-    response.json(blocks.splice(0, request.query.limit));
-  }else {
-    response.json(blocks);
-  }
-});
-
 var blocks = {
     'Fixed': 'This block is fixed',
     'Movable': 'This block is movable',
     'Rotating': 'This block is rotating'
 };
+
+app.get('/blocks', function (request, response) {
+  if(request.query.limit >= 0){
+    response.json(blocks.splice(0, request.query.limit));
+  }else {
+    response.json(Object.keys(blocks));
+  }
+});
 
 app.param('name', function (request, response, next) {
   var name = request.params.name;
