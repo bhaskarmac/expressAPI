@@ -7,7 +7,8 @@ $(document).ready(function () {
     var content, block;
     for (var i in blocks) {
       block = blocks[i];
-      content = '<a href="/blocks/'+block+'">'+block+'</a>';
+      content = '<a href="#" data-block="'+block+'"><img src="del.png" class="del"></a>'+
+      '<a href="/blocks/'+block+'">'+block+'</a>';
       list.push($('<li>', {html: content}));
     }
     $('.block-list').append(list);

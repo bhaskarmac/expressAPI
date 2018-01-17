@@ -16,3 +16,8 @@ body{
   border: 1px solid;
   list-style-type: none;
 }
+.del{
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
