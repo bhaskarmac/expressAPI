@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+var bodyParser = require('body-parser');
+var parseUrlEncoded = bodyParser.urlencoded({extended: false});
+
 var logger = require('./logger');
 app.use(logger);
 
