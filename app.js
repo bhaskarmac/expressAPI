@@ -15,12 +15,18 @@ var blocks = {
   'Rotating': 'This block is rotating'
 };
 
-app.get('/blocks', function (request, response) {
+app.route('/blocks')
+.get(function (request, response) {
   if(request.query.limit >= 0){
     response.json(blocks.splice(0, request.query.limit));
   }else {
     response.json(Object.keys(blocks));
   }
+})
+.post(parseUrlEncoded, function (request, response) {
+  var newBlock = request.body;
+  blocks[newBlock.name] = newBlock.description;
+  response.status(201).json(newBlock.name);
 });
 
 app.param('name', function (request, response, next) {
@@ -31,28 +37,22 @@ app.param('name', function (request, response, next) {
   next();
 })
 
-app.get('/blocks/:name', function (request, response) {
+app.route('/blocks/:name')
+.get(function (request, response) {
   var description = blocks[request.blockName];
   if(!description){
     response.status(404).json('No description found for ' + request.params.name);
   }else {
     response.json(description);
   }
+})
+.delete(function (request, response) {
+  delete blocks[request.blockName];
+  response.sendStatus(200);
 });
 
 app.get('/redirectme', function (request, response) {
   response.redirect('/newurl');
-});
-
-app.post('/blocks', parseUrlEncoded, function (request, response) {
-  var newBlock = request.body;
-  blocks[newBlock.name] = newBlock.description;
-  response.status(201).json(newBlock.name);
-});
-
-app.delete('/blocks/:name', function (request, response) {
-  delete blocks[request.blockName];
-  response.sendStatus(200);
 });
 
 app.listen(3000, function () {
